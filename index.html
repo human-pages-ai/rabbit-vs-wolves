@@ -39,8 +39,8 @@ h1 { margin-bottom: 5px; color: #e94560; font-size: 1.8em; }
 }
 
 .cell {
-  width: 60px;
-  height: 60px;
+  width: 58px;
+  height: 58px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -53,21 +53,15 @@ h1 { margin-bottom: 5px; color: #e94560; font-size: 1.8em; }
 .cell.dark { background: #b58863; }
 .cell:hover { filter: brightness(1.15); }
 .cell.selected { box-shadow: inset 0 0 0 3px #00ff88; }
-.cell.valid-move {
-  box-shadow: inset 0 0 0 3px rgba(0, 255, 136, 0.6);
-  cursor: pointer;
-}
+.cell.valid-move { box-shadow: inset 0 0 0 3px rgba(0, 255, 136, 0.6); cursor: pointer; }
 .cell.valid-move::after {
-  content: '';
-  position: absolute;
-  width: 18px;
-  height: 18px;
-  background: rgba(0, 255, 136, 0.4);
-  border-radius: 50%;
+  content: ''; position: absolute; width: 18px; height: 18px;
+  background: rgba(0, 255, 136, 0.4); border-radius: 50%;
 }
 .cell.danger { box-shadow: inset 0 0 0 3px rgba(255, 68, 68, 0.5); }
 .cell.goal-row { background: linear-gradient(to bottom, #f0d9b5, #d4f0b5); }
 .cell.goal-row.dark { background: linear-gradient(to bottom, #b58863, #8bb563); }
+.cell.rabbit-trail { background: rgba(0, 255, 136, 0.15); }
 
 .piece {
   font-size: 1.6em;
@@ -86,7 +80,7 @@ h1 { margin-bottom: 5px; color: #e94560; font-size: 1.8em; }
 }
 
 .turn-indicator {
-  font-size: 1.3em;
+  font-size: 1.2em;
   padding: 12px;
   border-radius: 8px;
   text-align: center;
@@ -96,21 +90,13 @@ h1 { margin-bottom: 5px; color: #e94560; font-size: 1.8em; }
 .turn-rabbit { background: #1b4332; color: #95d5b2; }
 .turn-wolves { background: #4a1520; color: #f5a0a0; }
 
-.rules {
-  font-size: 0.82em;
-  line-height: 1.6;
-  color: #bbb;
-}
+.rules { font-size: 0.82em; line-height: 1.6; color: #bbb; }
 .rules h3 { color: #e94560; margin: 10px 0 5px; }
 .rules ul { padding-right: 18px; }
 
 .status-msg {
-  font-size: 1.4em;
-  padding: 15px;
-  border-radius: 8px;
-  text-align: center;
-  margin-bottom: 15px;
-  font-weight: bold;
+  font-size: 1.4em; padding: 15px; border-radius: 8px;
+  text-align: center; margin-bottom: 15px; font-weight: bold;
   animation: pulse 1s infinite alternate;
 }
 @keyframes pulse { from { opacity: 0.8; } to { opacity: 1; } }
@@ -118,82 +104,56 @@ h1 { margin-bottom: 5px; color: #e94560; font-size: 1.8em; }
 .win-wolves { background: #4a1520; color: #f5a0a0; }
 
 .btn {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  border: none;
-  border-radius: 8px;
-  font-size: 1em;
-  cursor: pointer;
-  font-family: inherit;
-  transition: filter 0.15s;
+  display: block; width: 100%; padding: 10px; margin-top: 10px;
+  border: none; border-radius: 8px; font-size: 1em;
+  cursor: pointer; font-family: inherit; transition: filter 0.15s;
 }
 .btn:hover { filter: brightness(1.2); }
 .btn-restart { background: #e94560; color: white; }
 .btn-undo { background: #555; color: white; }
+.btn-skip { background: #2a6; color: white; }
 
-.presets {
-  margin-top: 15px;
-  padding-top: 15px;
-  border-top: 1px solid #333;
+.steps-display {
+  text-align: center;
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  background: #1b4332;
+  font-size: 0.9em;
 }
+.steps-display .step-dots span {
+  display: inline-block;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  margin: 0 3px;
+  border: 2px solid #95d5b2;
+}
+.steps-display .step-dots span.used { background: #95d5b2; }
+
+.presets { margin-top: 15px; padding-top: 15px; border-top: 1px solid #333; }
 .presets h3 { color: #e94560; margin-bottom: 8px; font-size: 0.95em; }
 .preset-btn {
-  display: block;
-  width: 100%;
-  padding: 8px 10px;
-  margin-bottom: 6px;
-  border: 1px solid #444;
-  border-radius: 6px;
-  background: #1a1a2e;
-  color: #ddd;
-  cursor: pointer;
-  font-family: inherit;
-  font-size: 0.85em;
-  text-align: right;
-  transition: all 0.15s;
+  display: block; width: 100%; padding: 8px 10px; margin-bottom: 6px;
+  border: 1px solid #444; border-radius: 6px; background: #1a1a2e;
+  color: #ddd; cursor: pointer; font-family: inherit;
+  font-size: 0.85em; text-align: right; transition: all 0.15s;
 }
 .preset-btn:hover { background: #2a2a4e; border-color: #e94560; }
 .preset-btn.active { border-color: #e94560; background: #2a1a2e; }
 .preset-btn .preset-name { font-weight: bold; color: #e94560; }
 .preset-btn .preset-desc { color: #888; font-size: 0.9em; }
 
-.config {
-  margin-top: 15px;
-  padding-top: 15px;
-  border-top: 1px solid #333;
-}
-.config summary {
-  cursor: pointer;
-  color: #e94560;
-  font-weight: bold;
-  font-size: 0.95em;
-}
-.config label {
-  display: block;
-  margin: 8px 0 3px;
-  font-size: 0.85em;
-  color: #aaa;
-}
-.config select, .config input {
-  width: 100%;
-  padding: 6px;
-  border-radius: 5px;
-  border: 1px solid #444;
-  background: #1a1a2e;
-  color: #eee;
-  font-family: inherit;
+.config { margin-top: 15px; padding-top: 15px; border-top: 1px solid #333; }
+.config summary { cursor: pointer; color: #e94560; font-weight: bold; font-size: 0.95em; }
+.config label { display: block; margin: 8px 0 3px; font-size: 0.85em; color: #aaa; }
+.config select {
+  width: 100%; padding: 6px; border-radius: 5px;
+  border: 1px solid #444; background: #1a1a2e; color: #eee; font-family: inherit;
 }
 
 .move-log {
-  margin-top: 15px;
-  max-height: 100px;
-  overflow-y: auto;
-  font-size: 0.8em;
-  color: #888;
-  direction: ltr;
-  text-align: left;
+  margin-top: 15px; max-height: 100px; overflow-y: auto;
+  font-size: 0.8em; color: #888; direction: ltr; text-align: left;
 }
 .move-log div { padding: 2px 0; border-bottom: 1px solid #222; }
 </style>
@@ -206,91 +166,78 @@ h1 { margin-bottom: 5px; color: #e94560; font-size: 1.8em; }
 <div class="game-container">
   <div class="sidebar">
     <div id="turnIndicator" class="turn-indicator turn-rabbit">תור הארנב</div>
+    <div id="stepsDisplay" class="steps-display" style="display:none"></div>
     <div id="statusMsg" style="display:none"></div>
 
     <button class="btn btn-restart" onclick="restartGame()">משחק חדש</button>
     <button class="btn btn-undo" onclick="undoMove()">בטל מהלך</button>
+    <button id="btnSkip" class="btn btn-skip" style="display:none" onclick="skipRemainingSteps()">סיים תור ארנב</button>
 
     <div class="presets">
       <h3>מצבי משחק:</h3>
       <button class="preset-btn" onclick="applyPreset('standard')">
-        <div class="preset-name">סטנדרטי (מומלץ) - 51% מאוזן</div>
-        <div class="preset-desc">9x8 | 3 זאבים | ארנב קופץ 2 | כולם זזים | תפיסה: דריכה</div>
+        <div class="preset-name">סטנדרטי (מומלץ) - מאוזן</div>
+        <div class="preset-desc">9x7 | 4 זאבים | 2 צעדים חופשיים | כולם זזים | דריכה</div>
       </button>
-      <button class="preset-btn" onclick="applyPreset('pack')">
-        <div class="preset-name">להקה - 51% מאוזן</div>
-        <div class="preset-desc">11x7 | 4 זאבים | ארנב קופץ 2 | כולם זזים | תפיסה: דריכה</div>
+      <button class="preset-btn" onclick="applyPreset('wide')">
+        <div class="preset-name">לוח רחב - מאוזן</div>
+        <div class="preset-desc">11x7 | 4 זאבים | 2 צעדים חופשיים | כולם זזים | דריכה</div>
       </button>
-      <button class="preset-btn" onclick="applyPreset('sprint')">
-        <div class="preset-name">ספרינט - 55% קצת לטובת ארנב</div>
-        <div class="preset-desc">10x7 | 4 זאבים | ארנב קופץ 2 | כולם זזים | תפיסה: דריכה</div>
+      <button class="preset-btn" onclick="applyPreset('easy')">
+        <div class="preset-name">קל לארנב</div>
+        <div class="preset-desc">9x7 | 3 זאבים | 2 צעדים חופשיים | כולם זזים | דריכה</div>
       </button>
-      <button class="preset-btn" onclick="applyPreset('hardcore')">
-        <div class="preset-name">קשוח - 41% קשה לארנב</div>
-        <div class="preset-desc">9x7 | 4 זאבים | ארנב קופץ 2 | כולם זזים | תפיסה: דריכה</div>
+      <button class="preset-btn" onclick="applyPreset('classic')">
+        <div class="preset-name">קלאסי (צמוד) - קשה</div>
+        <div class="preset-desc">9x7 | 2 זאבים | 3 צעדים חופשיים | כולם זזים | צמוד</div>
       </button>
     </div>
 
     <details class="config">
       <summary>הגדרות מתקדמות</summary>
-
       <label>עמודות (רוחב):</label>
       <select id="boardCols" onchange="restartGame()">
-        <option value="5">5</option>
-        <option value="6">6</option>
         <option value="7">7</option>
         <option value="8">8</option>
         <option value="9" selected>9</option>
         <option value="10">10</option>
         <option value="11">11</option>
       </select>
-
       <label>שורות (גובה):</label>
       <select id="boardRows" onchange="restartGame()">
         <option value="5">5</option>
         <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8" selected>8</option>
+        <option value="7" selected>7</option>
+        <option value="8">8</option>
         <option value="9">9</option>
       </select>
-
       <label>מספר זאבים:</label>
       <select id="wolfCount" onchange="restartGame()">
         <option value="2">2</option>
-        <option value="3" selected>3</option>
-        <option value="4">4</option>
+        <option value="3">3</option>
+        <option value="4" selected>4</option>
         <option value="5">5</option>
-        <option value="6">6</option>
       </select>
-
       <label>צעדי ארנב למהלך:</label>
       <select id="rabbitSteps" onchange="restartGame()">
         <option value="1">1</option>
         <option value="2" selected>2</option>
         <option value="3">3</option>
+        <option value="4">4</option>
       </select>
-
-      <label>הארנב יכול לקפוץ מעל זאבים?</label>
-      <select id="rabbitJump" onchange="restartGame()">
-        <option value="yes" selected>כן</option>
-        <option value="no">לא</option>
-      </select>
-
       <label>תנועת זאבים:</label>
       <select id="wolfMoveMode" onchange="restartGame()">
         <option value="one">זאב אחד בתור</option>
         <option value="all" selected>כל הזאבים בתור</option>
       </select>
-
       <label>איך הזאב תופס?</label>
       <select id="captureMode" onchange="restartGame()">
-        <option value="adjacent">צמוד (8 כיוונים) - קשה לארנב</option>
-        <option value="land" selected>דריכה (אותו משבצת) - מאוזן</option>
+        <option value="adjacent">צמוד (8 כיוונים)</option>
+        <option value="land" selected>דריכה (אותו משבצת)</option>
       </select>
     </details>
 
     <div id="rulesDisplay" class="rules"></div>
-
     <div id="moveLog" class="move-log"></div>
   </div>
 
@@ -301,45 +248,26 @@ h1 { margin-bottom: 5px; color: #e94560; font-size: 1.8em; }
 
 <script>
 const PRESETS = {
-  standard: {
-    cols: 9, rows: 8, wolfCount: 3, rabbitSteps: 2,
-    rabbitJump: true, wolfMoveMode: 'all', captureMode: 'land',
-    desc: 'סטנדרטי'
-  },
-  pack: {
-    cols: 11, rows: 7, wolfCount: 4, rabbitSteps: 2,
-    rabbitJump: true, wolfMoveMode: 'all', captureMode: 'land',
-    desc: 'להקה'
-  },
-  sprint: {
-    cols: 10, rows: 7, wolfCount: 4, rabbitSteps: 2,
-    rabbitJump: true, wolfMoveMode: 'all', captureMode: 'land',
-    desc: 'ספרינט'
-  },
-  hardcore: {
-    cols: 9, rows: 7, wolfCount: 4, rabbitSteps: 2,
-    rabbitJump: true, wolfMoveMode: 'all', captureMode: 'land',
-    desc: 'קשוח'
-  },
+  standard: { cols: 9, rows: 7, wolfCount: 4, rabbitSteps: 2, wolfMoveMode: 'all', captureMode: 'land' },
+  wide:     { cols: 11, rows: 7, wolfCount: 4, rabbitSteps: 2, wolfMoveMode: 'all', captureMode: 'land' },
+  easy:     { cols: 9, rows: 7, wolfCount: 3, rabbitSteps: 2, wolfMoveMode: 'all', captureMode: 'land' },
+  classic:  { cols: 9, rows: 7, wolfCount: 2, rabbitSteps: 3, wolfMoveMode: 'all', captureMode: 'adjacent' },
 };
 
 let state = {
-  cols: 9,
-  rows: 8,
-  rabbit: null,
-  wolves: [],
+  cols: 9, rows: 7,
+  rabbit: null, wolves: [],
   turn: 'rabbit',
-  selected: null,
-  validMoves: [],
-  gameOver: false,
-  winner: null,
+  selected: null, validMoves: [],
+  gameOver: false, winner: null,
   history: [],
   moveCount: 0,
+  // Rabbit sub-steps within a turn
+  rabbitStepsLeft: 2,
+  rabbitStepsTotal: 2,
+  // Wolf tracking
   wolvesMovedThisTurn: [],
   wolfMoveMode: 'all',
-  rabbitSteps: 2,
-  rabbitJump: true,
-  wolfCount: 3,
   captureMode: 'land',
   activePreset: 'standard',
 };
@@ -350,14 +278,11 @@ function applyPreset(name) {
   document.getElementById('boardRows').value = p.rows;
   document.getElementById('wolfCount').value = p.wolfCount;
   document.getElementById('rabbitSteps').value = p.rabbitSteps;
-  document.getElementById('rabbitJump').value = p.rabbitJump ? 'yes' : 'no';
   document.getElementById('wolfMoveMode').value = p.wolfMoveMode;
   document.getElementById('captureMode').value = p.captureMode;
   state.activePreset = name;
-
   document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
-  event.currentTarget.classList.add('active');
-
+  if (event && event.currentTarget) event.currentTarget.classList.add('active');
   restartGame();
 }
 
@@ -367,7 +292,6 @@ function getConfig() {
     rows: parseInt(document.getElementById('boardRows').value),
     wolfCount: parseInt(document.getElementById('wolfCount').value),
     rabbitSteps: parseInt(document.getElementById('rabbitSteps').value),
-    rabbitJump: document.getElementById('rabbitJump').value === 'yes',
     wolfMoveMode: document.getElementById('wolfMoveMode').value,
     captureMode: document.getElementById('captureMode').value,
   };
@@ -375,7 +299,6 @@ function getConfig() {
 
 function getInitialPositions(cols, rows, wolfCount) {
   const rabbit = { row: 0, col: Math.floor(cols / 2) };
-
   const wolves = [];
   const spacing = cols / (wolfCount + 1);
   const usedCols = new Set();
@@ -386,7 +309,6 @@ function getInitialPositions(cols, rows, wolfCount) {
     usedCols.add(col);
     wolves.push({ row: rows - 1, col });
   }
-
   return { rabbit, wolves };
 }
 
@@ -394,13 +316,11 @@ function restartGame() {
   const config = getConfig();
   state.cols = config.cols;
   state.rows = config.rows;
-  state.wolfCount = config.wolfCount;
-  state.rabbitSteps = config.rabbitSteps;
-  state.rabbitJump = config.rabbitJump;
+  state.rabbitStepsTotal = config.rabbitSteps;
   state.wolfMoveMode = config.wolfMoveMode;
   state.captureMode = config.captureMode;
 
-  const positions = getInitialPositions(state.cols, state.rows, state.wolfCount);
+  const positions = getInitialPositions(state.cols, state.rows, config.wolfCount);
   state.rabbit = { ...positions.rabbit };
   state.wolves = positions.wolves.map(w => ({ ...w }));
   state.turn = 'rabbit';
@@ -410,6 +330,7 @@ function restartGame() {
   state.winner = null;
   state.history = [];
   state.moveCount = 0;
+  state.rabbitStepsLeft = state.rabbitStepsTotal;
   state.wolvesMovedThisTurn = [];
 
   document.getElementById('statusMsg').style.display = 'none';
@@ -418,6 +339,7 @@ function restartGame() {
   updateRulesDisplay();
   renderBoard();
   updateTurnIndicator();
+  updateStepsDisplay();
 }
 
 function updateRulesDisplay() {
@@ -425,15 +347,14 @@ function updateRulesDisplay() {
   const captureText = state.captureMode === 'adjacent'
     ? 'הארנב נתפס אם <b>צמוד</b> לזאב (8 כיוונים)'
     : 'הארנב נתפס רק אם זאב <b>דורך עליו</b> (אותו משבצת)';
-  const jumpText = state.rabbitJump ? ' ויכול <b>לקפוץ</b> מעל זאבים' : '';
   const wolfText = state.wolfMoveMode === 'all'
     ? '<b>כל</b> הזאבים זזים בתור אחד'
     : 'זאב <b>אחד</b> זז בכל תור';
-
   el.innerHTML = `
     <h3>חוקים:</h3>
     <ul>
-      <li>הארנב זז עד <b>${state.rabbitSteps}</b> צעדים בכל כיוון${jumpText}</li>
+      <li>הארנב זז <b>${state.rabbitStepsTotal} צעדים חופשיים</b> בכל תור (יכול לשנות כיוון!)</li>
+      <li>הארנב <b>קופץ</b> מעל זאבים</li>
       <li>${wolfText}, צעד אחד בכל כיוון</li>
       <li>${captureText}</li>
       <li>הארנב מנצח: מגיע לשורה הירוקה</li>
@@ -447,6 +368,7 @@ function saveState() {
     wolves: state.wolves.map(w => ({ ...w })),
     turn: state.turn,
     moveCount: state.moveCount,
+    rabbitStepsLeft: state.rabbitStepsLeft,
     wolvesMovedThisTurn: [...state.wolvesMovedThisTurn],
   };
 }
@@ -458,6 +380,7 @@ function undoMove() {
   state.wolves = prev.wolves;
   state.turn = prev.turn;
   state.moveCount = prev.moveCount;
+  state.rabbitStepsLeft = prev.rabbitStepsLeft;
   state.wolvesMovedThisTurn = prev.wolvesMovedThisTurn;
   state.selected = null;
   state.validMoves = [];
@@ -466,158 +389,136 @@ function undoMove() {
   document.getElementById('statusMsg').style.display = 'none';
   renderBoard();
   updateTurnIndicator();
+  updateStepsDisplay();
 }
 
-function isAdjacent(pos1, pos2) {
-  return Math.abs(pos1.row - pos2.row) <= 1 && Math.abs(pos1.col - pos2.col) <= 1 &&
-         !(pos1.row === pos2.row && pos1.col === pos2.col);
+function isAdjacent(a, b) {
+  return Math.abs(a.row-b.row)<=1 && Math.abs(a.col-b.col)<=1 && !(a.row===b.row && a.col===b.col);
 }
+function isAdjacentToAnyWolf(pos) { return state.wolves.some(w => isAdjacent(pos, w)); }
+function isWolfAt(r, c) { return state.wolves.some(w => w.row===r && w.col===c); }
+function isRabbitAt(r, c) { return state.rabbit.row===r && state.rabbit.col===c; }
+function inBounds(r, c) { return r >= 0 && r < state.rows && c >= 0 && c < state.cols; }
 
-function isAdjacentToAnyWolf(pos) {
-  return state.wolves.some(w => isAdjacent(pos, w));
-}
+const DIRS = [[-1,-1],[-1,0],[-1,1],[0,-1],[0,1],[1,-1],[1,0],[1,1]];
 
-function isWolfAt(row, col) {
-  return state.wolves.some(w => w.row === row && w.col === col);
-}
-
-function isRabbitAt(row, col) {
-  return state.rabbit.row === row && state.rabbit.col === col;
-}
-
-function isSameSquareAsWolf(pos) {
-  return state.wolves.some(w => w.row === pos.row && w.col === pos.col);
-}
-
-function inBounds(row, col) {
-  return row >= 0 && row < state.rows && col >= 0 && col < state.cols;
-}
-
-function getValidMoves(piece, isRabbit) {
+// Get valid single-step moves for a piece
+function getStepMoves(piece, isRabbit) {
   const moves = [];
-  const maxSteps = isRabbit ? state.rabbitSteps : 1;
-  const directions = [
-    [-1, -1], [-1, 0], [-1, 1],
-    [0, -1],           [0, 1],
-    [1, -1],  [1, 0],  [1, 1]
-  ];
+  for (const [dr, dc] of DIRS) {
+    const nr = piece.row + dr;
+    const nc = piece.col + dc;
+    if (!inBounds(nr, nc)) continue;
 
-  for (const [dr, dc] of directions) {
-    for (let steps = 1; steps <= maxSteps; steps++) {
-      const nr = piece.row + dr * steps;
-      const nc = piece.col + dc * steps;
-
-      if (!inBounds(nr, nc)) break;
-
-      // Path blocking: check intermediate squares
-      if (!isRabbit || !state.rabbitJump) {
-        let pathClear = true;
-        for (let s = 1; s < steps; s++) {
-          const mr = piece.row + dr * s;
-          const mc = piece.col + dc * s;
-          if (isWolfAt(mr, mc) || isRabbitAt(mr, mc)) {
-            pathClear = false;
-            break;
-          }
-        }
-        if (!pathClear) break;
-      }
-
-      // Can't land on a wolf (for both)
+    if (isRabbit) {
+      // Rabbit can jump over wolves to the square beyond
       if (isWolfAt(nr, nc)) {
-        if (!isRabbit || !state.rabbitJump) break;
-        continue; // rabbit jumps over, can't land on wolf
-      }
-      // Can't land on rabbit (for wolf) - except in "land" capture mode
-      if (!isRabbit && isRabbitAt(nr, nc)) {
-        if (state.captureMode === 'land') {
-          // Wolf CAN land on rabbit = capture move
-          moves.push({ row: nr, col: nc, captures: true });
-          continue;
-        }
-        break;
-      }
-
-      if (isRabbit) {
-        if (state.captureMode === 'adjacent') {
-          // In adjacent mode, rabbit can't move to a square adjacent to a wolf
-          const wouldBeAdjacent = state.wolves.some(w =>
-            Math.abs(nr - w.row) <= 1 && Math.abs(nc - w.col) <= 1 && !(nr === w.row && nc === w.col)
-          );
-          if (!wouldBeAdjacent) {
-            moves.push({ row: nr, col: nc });
+        // Try to jump over
+        const jr = nr + dr;
+        const jc = nc + dc;
+        if (inBounds(jr, jc) && !isWolfAt(jr, jc)) {
+          if (state.captureMode === 'adjacent') {
+            if (!state.wolves.some(w => isAdjacent({row:jr,col:jc}, w))) {
+              moves.push({ row: jr, col: jc, isJump: true });
+            }
+          } else {
+            moves.push({ row: jr, col: jc, isJump: true });
           }
-          // Don't break - rabbit with jump can still reach squares beyond
-        } else {
-          // In "land" mode, rabbit can go anywhere not occupied by wolf
+        }
+        continue;
+      }
+      if (state.captureMode === 'adjacent') {
+        if (!state.wolves.some(w => isAdjacent({row:nr,col:nc}, w))) {
           moves.push({ row: nr, col: nc });
         }
       } else {
         moves.push({ row: nr, col: nc });
       }
+    } else {
+      // Wolf
+      if (isWolfAt(nr, nc)) continue;
+      if (isRabbitAt(nr, nc)) {
+        if (state.captureMode === 'land') {
+          moves.push({ row: nr, col: nc, captures: true });
+        }
+        continue;
+      }
+      moves.push({ row: nr, col: nc });
     }
   }
-
   return moves;
 }
 
 function checkGameOver() {
-  // Rabbit reached goal
   if (state.rabbit.row === state.rows - 1) {
-    state.gameOver = true;
-    state.winner = 'rabbit';
-    return true;
+    state.gameOver = true; state.winner = 'rabbit'; return true;
   }
-
-  if (state.captureMode === 'adjacent') {
-    // Adjacent capture: rabbit is adjacent to any wolf
-    if (isAdjacentToAnyWolf(state.rabbit)) {
-      state.gameOver = true;
-      state.winner = 'wolves';
-      return true;
-    }
-  } else {
-    // Land capture: wolf is on same square as rabbit
-    if (isSameSquareAsWolf(state.rabbit)) {
-      state.gameOver = true;
-      state.winner = 'wolves';
-      return true;
-    }
+  if (state.captureMode === 'adjacent' && isAdjacentToAnyWolf(state.rabbit)) {
+    state.gameOver = true; state.winner = 'wolves'; return true;
   }
-
-  // Rabbit trapped (no valid moves)
-  if (state.turn === 'rabbit') {
-    const rabbitMoves = getValidMoves(state.rabbit, true);
-    if (rabbitMoves.length === 0) {
-      state.gameOver = true;
-      state.winner = 'wolves';
-      return true;
-    }
+  if (state.captureMode === 'land' && state.wolves.some(w => w.row===state.rabbit.row && w.col===state.rabbit.col)) {
+    state.gameOver = true; state.winner = 'wolves'; return true;
   }
-
+  if (state.turn === 'rabbit' && getStepMoves(state.rabbit, true).length === 0) {
+    state.gameOver = true; state.winner = 'wolves'; return true;
+  }
   return false;
+}
+
+function skipRemainingSteps() {
+  if (state.turn !== 'rabbit' || state.rabbitStepsLeft >= state.rabbitStepsTotal) return;
+  state.history.push(saveState());
+  state.rabbitStepsLeft = 0;
+  endRabbitTurn();
+}
+
+function endRabbitTurn() {
+  state.turn = 'wolves';
+  state.wolvesMovedThisTurn = [];
+  state.selected = null;
+  state.validMoves = [];
+  if (checkGameOver()) { renderBoard(); showResult(); return; }
+  renderBoard();
+  updateTurnIndicator();
+  updateStepsDisplay();
+}
+
+function endWolvesTurn() {
+  state.turn = 'rabbit';
+  state.rabbitStepsLeft = state.rabbitStepsTotal;
+  state.wolvesMovedThisTurn = [];
+  state.moveCount++;
+  state.selected = null;
+  state.validMoves = [];
+  if (checkGameOver()) { renderBoard(); showResult(); return; }
+  renderBoard();
+  updateTurnIndicator();
+  updateStepsDisplay();
 }
 
 function handleCellClick(row, col) {
   if (state.gameOver) return;
 
+  // Clicking a valid move
   if (state.selected && state.validMoves.some(m => m.row === row && m.col === col)) {
     executeMove(row, col);
     return;
   }
 
-  if (state.turn === 'rabbit' && isRabbitAt(row, col)) {
+  // Select rabbit
+  if (state.turn === 'rabbit' && isRabbitAt(row, col) && state.rabbitStepsLeft > 0) {
     state.selected = { row, col };
-    state.validMoves = getValidMoves(state.rabbit, true);
+    state.validMoves = getStepMoves(state.rabbit, true);
     renderBoard();
     return;
   }
 
+  // Select wolf
   if (state.turn === 'wolves' && isWolfAt(row, col)) {
     const wolfIdx = state.wolves.findIndex(w => w.row === row && w.col === col);
     if (state.wolfMoveMode === 'all' && state.wolvesMovedThisTurn.includes(wolfIdx)) return;
     state.selected = { row, col };
-    state.validMoves = getValidMoves({ row, col }, false);
+    state.validMoves = getStepMoves({ row, col }, false);
     renderBoard();
     return;
   }
@@ -634,20 +535,26 @@ function executeMove(row, col) {
     logMove(`R (${state.rabbit.row},${state.rabbit.col})->(${row},${col})`);
     state.rabbit.row = row;
     state.rabbit.col = col;
+    state.rabbitStepsLeft--;
     state.selected = null;
     state.validMoves = [];
-    state.moveCount++;
 
     if (checkGameOver()) { renderBoard(); showResult(); return; }
 
-    state.turn = 'wolves';
-    state.wolvesMovedThisTurn = [];
+    if (state.rabbitStepsLeft <= 0 || getStepMoves(state.rabbit, true).length === 0) {
+      endRabbitTurn();
+    } else {
+      // Rabbit still has steps - auto-select rabbit for next step
+      state.selected = { row: state.rabbit.row, col: state.rabbit.col };
+      state.validMoves = getStepMoves(state.rabbit, true);
+      renderBoard();
+      updateStepsDisplay();
+    }
   } else {
     const wolfIdx = state.wolves.findIndex(w =>
       w.row === state.selected.row && w.col === state.selected.col
     );
-
-    logMove(`W${wolfIdx + 1} (${state.wolves[wolfIdx].row},${state.wolves[wolfIdx].col})->(${row},${col})`);
+    logMove(`W${wolfIdx+1} (${state.wolves[wolfIdx].row},${state.wolves[wolfIdx].col})->(${row},${col})`);
     state.wolves[wolfIdx].row = row;
     state.wolves[wolfIdx].col = col;
     state.selected = null;
@@ -659,23 +566,18 @@ function executeMove(row, col) {
       state.wolvesMovedThisTurn.push(wolfIdx);
       const allMoved = state.wolves.every((w, i) => {
         if (state.wolvesMovedThisTurn.includes(i)) return true;
-        return getValidMoves(w, false).length === 0;
+        return getStepMoves(w, false).length === 0;
       });
       if (allMoved) {
-        state.turn = 'rabbit';
-        state.wolvesMovedThisTurn = [];
-        state.moveCount++;
+        endWolvesTurn();
+      } else {
+        renderBoard();
+        updateTurnIndicator();
       }
     } else {
-      state.turn = 'rabbit';
-      state.moveCount++;
+      endWolvesTurn();
     }
   }
-
-  if (checkGameOver()) { renderBoard(); showResult(); return; }
-
-  renderBoard();
-  updateTurnIndicator();
 }
 
 function showResult() {
@@ -688,7 +590,9 @@ function showResult() {
     msg.className = 'status-msg win-wolves';
     msg.textContent = 'הזאבים ניצחו! הארנב נתפס!';
   }
-  updateTurnIndicator();
+  document.getElementById('turnIndicator').style.display = 'none';
+  document.getElementById('stepsDisplay').style.display = 'none';
+  document.getElementById('btnSkip').style.display = 'none';
 }
 
 function updateTurnIndicator() {
@@ -697,7 +601,7 @@ function updateTurnIndicator() {
   el.style.display = 'block';
   if (state.turn === 'rabbit') {
     el.className = 'turn-indicator turn-rabbit';
-    el.textContent = 'תור הארנב';
+    el.textContent = 'תור הארנב - לחץ על הארנב';
   } else {
     el.className = 'turn-indicator turn-wolves';
     if (state.wolfMoveMode === 'all') {
@@ -706,6 +610,24 @@ function updateTurnIndicator() {
     } else {
       el.textContent = 'תור הזאבים (בחר זאב)';
     }
+  }
+}
+
+function updateStepsDisplay() {
+  const el = document.getElementById('stepsDisplay');
+  const skipBtn = document.getElementById('btnSkip');
+  if (state.turn === 'rabbit' && !state.gameOver) {
+    el.style.display = 'block';
+    let dots = '<span class="step-dots">';
+    for (let i = 0; i < state.rabbitStepsTotal; i++) {
+      dots += `<span class="${i >= state.rabbitStepsLeft ? 'used' : ''}"></span>`;
+    }
+    dots += '</span>';
+    el.innerHTML = `צעדים: ${dots} ${state.rabbitStepsLeft}/${state.rabbitStepsTotal}`;
+    skipBtn.style.display = state.rabbitStepsLeft < state.rabbitStepsTotal ? 'block' : 'none';
+  } else {
+    el.style.display = 'none';
+    skipBtn.style.display = 'none';
   }
 }
 
@@ -719,9 +641,7 @@ function logMove(text) {
 function renderBoard() {
   const board = document.getElementById('board');
   board.innerHTML = '';
-  board.style.gridTemplateColumns = `repeat(${state.cols}, 60px)`;
-
-  const goalRow = state.rows - 1;
+  board.style.gridTemplateColumns = `repeat(${state.cols}, 58px)`;
 
   for (let r = 0; r < state.rows; r++) {
     for (let c = 0; c < state.cols; c++) {
@@ -729,15 +649,9 @@ function renderBoard() {
       const isLight = (r + c) % 2 === 0;
       cell.className = `cell ${isLight ? 'light' : 'dark'}`;
 
-      if (r === goalRow) cell.classList.add('goal-row');
-
-      if (state.selected && state.selected.row === r && state.selected.col === c) {
-        cell.classList.add('selected');
-      }
-
-      if (state.validMoves.some(m => m.row === r && m.col === c)) {
-        cell.classList.add('valid-move');
-      }
+      if (r === state.rows - 1) cell.classList.add('goal-row');
+      if (state.selected && state.selected.row === r && state.selected.col === c) cell.classList.add('selected');
+      if (state.validMoves.some(m => m.row === r && m.col === c)) cell.classList.add('valid-move');
 
       if (isRabbitAt(r, c)) {
         const piece = document.createElement('span');
@@ -745,7 +659,6 @@ function renderBoard() {
         piece.textContent = '\uD83D\uDC30';
         cell.appendChild(piece);
       }
-
       if (isWolfAt(r, c)) {
         const piece = document.createElement('span');
         piece.className = 'piece';
@@ -757,12 +670,10 @@ function renderBoard() {
         cell.appendChild(piece);
       }
 
-      // Danger zones
+      // Danger zones for adjacent capture
       if (state.captureMode === 'adjacent' && state.turn === 'rabbit' &&
           !isWolfAt(r, c) && !isRabbitAt(r, c)) {
-        if (isAdjacentToAnyWolf({ row: r, col: c })) {
-          cell.classList.add('danger');
-        }
+        if (isAdjacentToAnyWolf({ row: r, col: c })) cell.classList.add('danger');
       }
 
       cell.addEventListener('click', () => handleCellClick(r, c));
@@ -771,9 +682,8 @@ function renderBoard() {
   }
 }
 
-// Initialize with "standard" preset
+// Init
 applyPreset('standard');
-// Highlight the default preset button
 document.querySelector('.preset-btn').classList.add('active');
 </script>
 </body>
