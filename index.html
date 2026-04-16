@@ -213,21 +213,21 @@ h1 { margin-bottom: 5px; color: #e94560; font-size: 1.8em; }
 
     <div class="presets">
       <h3>מצבי משחק:</h3>
-      <button class="preset-btn" onclick="applyPreset('chase')">
-        <div class="preset-name">מרדף (מומלץ)</div>
-        <div class="preset-desc">9x7 | 3 זאבים | ארנב קופץ 2 | זאב אחד בתור | תפיסה: צמוד</div>
+      <button class="preset-btn" onclick="applyPreset('standard')">
+        <div class="preset-name">סטנדרטי (מומלץ) - 51% מאוזן</div>
+        <div class="preset-desc">9x8 | 3 זאבים | ארנב קופץ 2 | כולם זזים | תפיסה: דריכה</div>
       </button>
-      <button class="preset-btn" onclick="applyPreset('hunt')">
-        <div class="preset-name">ציד</div>
-        <div class="preset-desc">8x6 | 4 זאבים | ארנב קופץ 3 | כולם זזים | תפיסה: דריכה</div>
+      <button class="preset-btn" onclick="applyPreset('pack')">
+        <div class="preset-name">להקה - 51% מאוזן</div>
+        <div class="preset-desc">11x7 | 4 זאבים | ארנב קופץ 2 | כולם זזים | תפיסה: דריכה</div>
       </button>
-      <button class="preset-btn" onclick="applyPreset('escape')">
-        <div class="preset-name">בריחה</div>
-        <div class="preset-desc">7x7 | 3 זאבים | ארנב קופץ 2 | זאב אחד בתור | תפיסה: דריכה</div>
+      <button class="preset-btn" onclick="applyPreset('sprint')">
+        <div class="preset-name">ספרינט - 55% קצת לטובת ארנב</div>
+        <div class="preset-desc">10x7 | 4 זאבים | ארנב קופץ 2 | כולם זזים | תפיסה: דריכה</div>
       </button>
-      <button class="preset-btn" onclick="applyPreset('siege')">
-        <div class="preset-name">מצור</div>
-        <div class="preset-desc">11x7 | 4 זאבים | ארנב קופץ 2 | כולם זזים | תפיסה: צמוד</div>
+      <button class="preset-btn" onclick="applyPreset('hardcore')">
+        <div class="preset-name">קשוח - 41% קשה לארנב</div>
+        <div class="preset-desc">9x7 | 4 זאבים | ארנב קופץ 2 | כולם זזים | תפיסה: דריכה</div>
       </button>
     </div>
 
@@ -241,6 +241,7 @@ h1 { margin-bottom: 5px; color: #e94560; font-size: 1.8em; }
         <option value="7">7</option>
         <option value="8">8</option>
         <option value="9" selected>9</option>
+        <option value="10">10</option>
         <option value="11">11</option>
       </select>
 
@@ -248,8 +249,8 @@ h1 { margin-bottom: 5px; color: #e94560; font-size: 1.8em; }
       <select id="boardRows" onchange="restartGame()">
         <option value="5">5</option>
         <option value="6">6</option>
-        <option value="7" selected>7</option>
-        <option value="8">8</option>
+        <option value="7">7</option>
+        <option value="8" selected>8</option>
         <option value="9">9</option>
       </select>
 
@@ -277,14 +278,14 @@ h1 { margin-bottom: 5px; color: #e94560; font-size: 1.8em; }
 
       <label>תנועת זאבים:</label>
       <select id="wolfMoveMode" onchange="restartGame()">
-        <option value="one" selected>זאב אחד בתור</option>
-        <option value="all">כל הזאבים בתור</option>
+        <option value="one">זאב אחד בתור</option>
+        <option value="all" selected>כל הזאבים בתור</option>
       </select>
 
       <label>איך הזאב תופס?</label>
       <select id="captureMode" onchange="restartGame()">
-        <option value="adjacent" selected>צמוד (8 כיוונים) - קשה לארנב</option>
-        <option value="land">דריכה (אותו משבצת) - קל לארנב</option>
+        <option value="adjacent">צמוד (8 כיוונים) - קשה לארנב</option>
+        <option value="land" selected>דריכה (אותו משבצת) - מאוזן</option>
       </select>
     </details>
 
@@ -300,31 +301,31 @@ h1 { margin-bottom: 5px; color: #e94560; font-size: 1.8em; }
 
 <script>
 const PRESETS = {
-  chase: {
-    cols: 9, rows: 7, wolfCount: 3, rabbitSteps: 2,
-    rabbitJump: true, wolfMoveMode: 'one', captureMode: 'adjacent',
-    desc: 'מרדף'
-  },
-  hunt: {
-    cols: 8, rows: 6, wolfCount: 4, rabbitSteps: 3,
+  standard: {
+    cols: 9, rows: 8, wolfCount: 3, rabbitSteps: 2,
     rabbitJump: true, wolfMoveMode: 'all', captureMode: 'land',
-    desc: 'ציד'
+    desc: 'סטנדרטי'
   },
-  escape: {
-    cols: 7, rows: 7, wolfCount: 3, rabbitSteps: 2,
-    rabbitJump: true, wolfMoveMode: 'one', captureMode: 'land',
-    desc: 'בריחה'
-  },
-  siege: {
+  pack: {
     cols: 11, rows: 7, wolfCount: 4, rabbitSteps: 2,
-    rabbitJump: true, wolfMoveMode: 'all', captureMode: 'adjacent',
-    desc: 'מצור'
+    rabbitJump: true, wolfMoveMode: 'all', captureMode: 'land',
+    desc: 'להקה'
+  },
+  sprint: {
+    cols: 10, rows: 7, wolfCount: 4, rabbitSteps: 2,
+    rabbitJump: true, wolfMoveMode: 'all', captureMode: 'land',
+    desc: 'ספרינט'
+  },
+  hardcore: {
+    cols: 9, rows: 7, wolfCount: 4, rabbitSteps: 2,
+    rabbitJump: true, wolfMoveMode: 'all', captureMode: 'land',
+    desc: 'קשוח'
   },
 };
 
 let state = {
   cols: 9,
-  rows: 7,
+  rows: 8,
   rabbit: null,
   wolves: [],
   turn: 'rabbit',
@@ -335,12 +336,12 @@ let state = {
   history: [],
   moveCount: 0,
   wolvesMovedThisTurn: [],
-  wolfMoveMode: 'one',
+  wolfMoveMode: 'all',
   rabbitSteps: 2,
   rabbitJump: true,
   wolfCount: 3,
-  captureMode: 'adjacent',
-  activePreset: 'chase',
+  captureMode: 'land',
+  activePreset: 'standard',
 };
 
 function applyPreset(name) {
@@ -770,8 +771,8 @@ function renderBoard() {
   }
 }
 
-// Initialize with "chase" preset
-applyPreset('chase');
+// Initialize with "standard" preset
+applyPreset('standard');
 // Highlight the default preset button
 document.querySelector('.preset-btn').classList.add('active');
 </script>
